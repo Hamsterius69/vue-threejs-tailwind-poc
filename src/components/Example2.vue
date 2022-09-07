@@ -36,10 +36,14 @@ export default {
         },
         animarEscena() {
             requestAnimationFrame(this.animarEscena);
-            // cubo1.rotation.y += 0.02; // rotamos el cubo en el eje y 0.02 unidades de medida.
-            // cubo1.rotation.x += 0.02;
+            cubo.rotation.y += 0.02; // rotamos el cubo en el eje y 0.02 unidades de medida.
+            cubo.rotation.x += 0.02;
+            cubo1.rotation.y += 0.02; // rotamos el cubo en el eje y 0.02 unidades de medida.
+            cubo1.rotation.x += 0.02;
+            circle.rotation.y += 0.02; // rotamos el cubo en el eje y 0.02 unidades de medida.
+            circle.rotation.x += 0.02;
+            
             controls.update();
-            //stats.update();
             this.renderEscena();
         },
         startEscena() {
@@ -60,38 +64,31 @@ export default {
             // escena.fog = new THREE.Fog(0x76456c, 0.1, 8);
             // Camara
             camara = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 0.2, 150);
-            camara.position.set(0, 0, 5); // situamos la cámara en las coordenadas absolutas
+            camara.position.set(0, 0, 11); // situamos la cámara en las coordenadas absolutas
             camara.lookAt(escena.position); // le indicamos a la cámara que mire la escena.
             //escena.add(camara); // añadimos la cámara a la escena
 
             // cubo
-            const material1 = new THREE.MeshBasicMaterial();
-            const material2 = new THREE.MeshBasicMaterial();
-            const material3 = new THREE.MeshBasicMaterial();
-            const material4 = new THREE.MeshBasicMaterial();
-            const material5 = new THREE.MeshBasicMaterial();
-            const material6 = new THREE.MeshBasicMaterial();
-            material1.color = new THREE.Color(0x33FF00);
-            material2.color = new THREE.Color(0x00CCFF);
-            material3.color = new THREE.Color(0xFF0000);
-            material4.color = new THREE.Color(0xFFCC00);
-            material5.color = new THREE.Color(0x99FFFF);
-            material6.color = new THREE.Color(0xFFFFFF);
-            const cuboMateriales = [
-                 material1,
-                 material2,
-                 material3,
-                 material4,
-                 material5,
-                 material6,
-             ];
-            // const cuboMaterial = new THREE.MeshFaceMaterial(cuboMateriales);
-            const cuboGeometria = new THREE.BoxGeometry(0.5, 0.5, 1);
+             const material1 = new THREE.MeshBasicMaterial();
+             const material2 = new THREE.MeshBasicMaterial();
+             const material3 = new THREE.MeshBasicMaterial();
+             const material4 = new THREE.MeshBasicMaterial();
+             const material5 = new THREE.MeshBasicMaterial();
+             material1.color = new THREE.Color('blue');
+             material2.color = new THREE.Color('yelow');
+             material3.color = new THREE.Color('white');
+             material4.color = new THREE.Color('green');
+             const cuboMateriales = [
+                  material1,
+                  material2,
+                  material3,
+              ];
+            const cuboGeometria = new THREE.ConeGeometry(0.5, 0.5, 3, 1);
 
             cubo1 = new THREE.Mesh(cuboGeometria, cuboMateriales);
             cubo1.position.set(0, 0, -3.0);
             //add geometry
-            const geometry = new THREE.BoxGeometry();
+            const geometry = new THREE.DodecahedronGeometry(0.7);
             const material = new THREE.MeshBasicMaterial({
               color: 'tomato',
               wireframe: true,
@@ -99,7 +96,7 @@ export default {
             cubo = new THREE.Mesh(geometry, material);
             cubo.position.z = -3;
             //add geometry
-            const geometryC = new THREE.SphereGeometry();
+            const geometryC = new THREE.CapsuleGeometry();
             const materialC = new THREE.MeshBasicMaterial({
               color: 'green',
               wireframe: true,
