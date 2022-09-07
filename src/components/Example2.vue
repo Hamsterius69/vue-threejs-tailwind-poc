@@ -6,23 +6,17 @@
 <script>
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import Stats from 'three/examples/jsm/libs/stats.module'
-var render = null;
-var escena = null;
-var camara = null;
-var cubo = null;
-var cubo1 = null;
-var circle = null;
-var controls = null;
-// var stats = null;
+let render = null;
+let escena = null;
+let camara = null;
+let cubo = null;
+let cubo1 = null;
+let circle = null;
+let controls = null;
 export default {
     name: 'Example2',
     data() {
 		return {
-            // render: null,
-            // escena: null,
-            // camara: null,
-            // cubo: null,
 		};
 	},
     mounted() {
@@ -72,12 +66,9 @@ export default {
              const material1 = new THREE.MeshBasicMaterial();
              const material2 = new THREE.MeshBasicMaterial();
              const material3 = new THREE.MeshBasicMaterial();
-             const material4 = new THREE.MeshBasicMaterial();
-             const material5 = new THREE.MeshBasicMaterial();
              material1.color = new THREE.Color('blue');
-             material2.color = new THREE.Color('yelow');
+             material2.color = new THREE.Color('black');
              material3.color = new THREE.Color('white');
-             material4.color = new THREE.Color('green');
              const cuboMateriales = [
                   material1,
                   material2,
@@ -108,16 +99,9 @@ export default {
             escena.add(cubo1);
 
             //control
-            // stats = Stats()
-            // document.body.appendChild(stats.dom);
             controls = new OrbitControls( camara, render.domElement);
             controls.listenToKeyEvents(document.body)
-            console.log(controls);
-            // controls.autoRotate = true;
-            // controls.listenToKeyEvents(document.body);
-            // controls.addEventListener( 'change', ()=>{render.render(escena, camara)} );
             controls.update();
-
         },
     },
 };
